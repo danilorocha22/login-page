@@ -3,5 +3,7 @@
   primaryButtonText="Login Now"
   secondaryButtonText="Signup Now"
 >
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  </form>
 
 </app-default-login>
