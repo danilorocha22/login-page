@@ -6,8 +6,11 @@
     <ng-content></ng-content>
 
     <div class="btn-wrapper">
-      <button (click)="submit()"
-        class="btn-primary">
+      <button
+        (click)="submit()"
+        class="btn-primary"
+        [disabled]="disableButtonDefault"
+        >
       {{ primaryButtonText }}
       </button>
 
@@ -17,8 +20,10 @@
         <div></div>
       </div>
 
-      <button (click)="submit()"
-        class="btn-secondary">
+      <button
+        (click)="navigate()"
+        class="btn-secondary"
+        >
         {{ secondaryButtonText }}
       </button>
     </div>

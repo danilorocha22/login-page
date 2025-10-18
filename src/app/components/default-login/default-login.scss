@@ -67,6 +67,11 @@ main {
         padding: 12px 24px;
         cursor: pointer;
 
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
         &.btn-primary {
           background-color: $primary-color;
           color: white;
