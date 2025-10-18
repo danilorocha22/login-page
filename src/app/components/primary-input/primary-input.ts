@@ -21,18 +21,17 @@ export type InputType = 'text' | 'email' | 'password';
 })
 export class PrimaryInput implements ControlValueAccessor {
   @Input() type: InputType = 'text';
-  @Input() label: string = '';
   @Input() placeholder: string = '';
+  @Input() label: string = '';
   @Input() inputName: string = '';
-
   value: string = '';
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  onInput(event: any) {
-    this.value = (event.target as HTMLInputElement).value;
-    this.registerOnChange(this.value);
+  onInput(event: Event) {
+    let value = (event.target as HTMLInputElement).value;
+    this.onChange(value);
   }
 
   writeValue(value: any): void {

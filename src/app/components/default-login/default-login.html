@@ -6,7 +6,9 @@
     <ng-content></ng-content>
 
     <div class="btn-wrapper">
-      <button class="btn-primary">{{ primaryButtonText }}
+      <button (click)="submit()"
+        class="btn-primary">
+      {{ primaryButtonText }}
       </button>
 
       <div class="divider">
@@ -15,7 +17,9 @@
         <div></div>
       </div>
 
-      <button class="btn-secondary">{{ secondaryButtonText }}
+      <button (click)="submit()"
+        class="btn-secondary">
+        {{ secondaryButtonText }}
       </button>
     </div>
   </section>
