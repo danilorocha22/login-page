@@ -1,4 +1,7 @@
+import { UserLogin } from "./user-login";
+
 export interface User {
-  email: string;
-  password: string;
+  id: number;
+  name: string;
+  userLogin: UserLogin;
 }
