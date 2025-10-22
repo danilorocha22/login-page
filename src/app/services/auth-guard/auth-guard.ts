@@ -20,11 +20,12 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const authToken = sessionStorage.getItem('auth-token');
 
-    if (authToken) {
-      return true;
-    } else {
+    if (!authToken) {
+      console.log('Você não está logado');
       this.router.navigate(['/login']);
       return false;
     }
+
+    return true;
   }
 }
