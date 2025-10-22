@@ -39,7 +39,7 @@ export class Signup {
         this.signupForm.value.password ?? ''
       )
       .subscribe({
-        next: () => this.toastService.success('Login feito com sucesso!'),
+        next: () => this.toastService.success('Cadastro realizado com sucesso!'),
         error: () => this.toastService.error('Erro inesperado! Tente novamente mais tarde'),
       });
   }
