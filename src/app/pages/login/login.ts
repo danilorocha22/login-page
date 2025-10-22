@@ -1,11 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { DefaultLogin } from "../../components/default-login/default-login";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PrimaryInput } from "../../components/primary-input/primary-input";
+import { DefaultLogin } from '../../components/default-login/default-login';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PrimaryInput } from '../../components/primary-input/primary-input';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { UserLogin } from '../../interfaces/user-login';
 import { ToastrService } from 'ngx-toastr';
+
+interface LoginForm {
+  email: FormControl;
+  password: FormControl;
+}
 
 @Component({
   selector: 'app-login',
@@ -24,26 +28,15 @@ export class Login {
   });
 
   submit() {
-    if (this.loginForm.valid) {
-      const user: UserLogin = {
-        id: 0,
-        email: this.loginForm.value.email ?? '',
-        password: this.loginForm.value.password ?? ''
-      }
-
-      this.loginService.login(user).subscribe({
-        next: () => {
-          this.toastService.success('Login feito com sucesso!');
-        },
-        error: (error) => {
-          this.toastService.error('Erro inesperado! Tente novamente mais tarde.');
-        }
+    this.loginService
+      .login(this.loginForm.value.email ?? '', this.loginForm.value.password ?? '')
+      .subscribe({
+        next: () => this.toastService.success('Login feito com sucesso!'),
+        error: () => this.toastService.error('Erro inesperado! Tente novamente mais tarde'),
       });
-    }
   }
 
   navigate() {
     this.router.navigate(['signup']);
   }
-
 }
